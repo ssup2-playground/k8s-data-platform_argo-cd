@@ -1,0 +1,24 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: mediawiki-kafka-ingester
+  namespace: data-platform
+
+resources:
+  - deployment.yaml
+  - configmap.yaml
+  - secret.yaml
+  - serviceaccount.yaml
+  - networkpolicy.yaml
+
+commonLabels:
+  app.kubernetes.io/name: mediawiki-kafka-ingester
+  app.kubernetes.io/part-of: data-platform
+  app.kubernetes.io/managed-by: argocd
+
+namespace: data-platform
+
+images:
+  - name: ghcr.io/ssup2-playground/k8s-data-platform_mediawiki-kafka-ingester
+    newTag: commit-52e02f79

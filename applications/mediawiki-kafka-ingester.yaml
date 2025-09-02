@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mediawiki-kafka-ingester
+  namespace: argo-cd
+  labels:
+    app.kubernetes.io/name: mediawiki-kafka-ingester
+    app.kubernetes.io/part-of: data-platform
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: data-platform
+  source:
+    repoURL: https://github.com/ssup2-playground/k8s-data-platform_argo-cd
+    targetRevision: HEAD
+    path: manifests/mediawiki-kafka-ingester
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: data-platform
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+  revisionHistoryLimit: 3
