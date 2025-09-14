@@ -1,11 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: data-platform
   namespace: argo-cd
-  labels:
-    app.kubernetes.io/name: data-platform-project
-    app.kubernetes.io/part-of: data-platform
+  name: data-platform
 spec:
   description: Data Platform Applications Project
   

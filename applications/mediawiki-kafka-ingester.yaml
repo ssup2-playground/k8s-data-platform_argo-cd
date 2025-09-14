@@ -1,13 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mediawiki-kafka-ingester
   namespace: argo-cd
-  labels:
-    app.kubernetes.io/name: mediawiki-kafka-ingester
-    app.kubernetes.io/part-of: data-platform
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  name: mediawiki-kafka-ingester
 spec:
   project: data-platform
   source:
@@ -16,7 +11,7 @@ spec:
     path: manifests/mediawiki-kafka-ingester
   destination:
     server: https://kubernetes.default.svc
-    namespace: data-platform
+    namespace: mediawiki-kafka-ingester
   syncPolicy:
     automated:
       prune: true

@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: apps
   name: mediawiki-kafka-ingester
 spec:
   replicas: 1
@@ -17,11 +16,17 @@ spec:
       - name: mediawiki-kafka-ingester
         image: ghcr.io/ssup2-playground/k8s-data-platform_mediawiki-kafka-ingester:0.1.0
         imagePullPolicy: Always
-        envFrom:
-        - configMapRef:
-            name: mediawiki-kafka-ingester-config
-        - secretRef:
-            name: mediawiki-kafka-ingester-secret
+        env:
+        - name: KAFKA_BOOTSTRAP
+          value: "kafka-service:9092"
+        - name: KAFKA_TOPIC
+          value: "mediawiki.page-create"
+        - name: KAFKA_USERNAME
+          value: "user"
+        - name: KAFKA_PASSWORD
+          value: "user"
+        - name: EVENTSTREAM_URL
+          value: "https://stream.wikimedia.org/v2/stream/mediawiki.page-create"
         resources:
           requests:
             memory: "128Mi"
