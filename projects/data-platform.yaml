@@ -10,12 +10,10 @@ spec:
   description: Data Platform Applications Project
   
   sourceRepos:
-  - 'https://github.com/ssup2-playground/k8s-data-platform_argo-cd'
+  - '*'
   
   destinations:
-  - namespace: 'data-platform*'
-    server: https://kubernetes.default.svc
-  - namespace: argocd
+  - namespace: '*'
     server: https://kubernetes.default.svc
   
   clusterResourceWhitelist:
@@ -43,5 +41,7 @@ spec:
     kind: NetworkPolicy
   - group: 'policy'
     kind: PodDisruptionBudget
+  - group: 'argoproj.io'
+    kind: Application
   
 

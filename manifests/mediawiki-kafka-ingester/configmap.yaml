@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  namespace: apps
   name: mediawiki-kafka-ingester-config
-  namespace: data-platform
-  labels:
-    app.kubernetes.io/component: config
 data:
   KAFKA_BOOTSTRAP: "kafka-service:9092"
   KAFKA_TOPIC: "mediawiki.page-create"
+  KAFKA_USERNAME: "user"
+  KAFKA_PASSWORD: "user"
   EVENTSTREAM_URL: "https://stream.wikimedia.org/v2/stream/mediawiki.page-create"

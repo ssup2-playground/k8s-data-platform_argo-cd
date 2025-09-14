@@ -9,7 +9,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: data-platform
   source:
     repoURL: https://github.com/ssup2-playground/k8s-data-platform_argo-cd
     targetRevision: HEAD
