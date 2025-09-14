@@ -18,7 +18,7 @@ spec:
         imagePullPolicy: Always
         env:
         - name: KAFKA_BOOTSTRAP
-          value: "kafka-service:9092"
+          value: "kafka.kafka:9092"
         - name: KAFKA_TOPIC
           value: "mediawiki.page-create"
         - name: KAFKA_USERNAME
