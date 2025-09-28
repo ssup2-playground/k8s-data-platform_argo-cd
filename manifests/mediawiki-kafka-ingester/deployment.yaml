@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: mediawiki-kafka-ingester
-        image: ghcr.io/ssup2-playground/k8s-data-platform_mediawiki-kafka-ingester:0.1.0
+        image: ghcr.io/ssup2-playground/k8s-data-platform_mediawiki-kafka-ingester:0.1.1
         imagePullPolicy: Always
         env:
         - name: KAFKA_BOOTSTRAP
