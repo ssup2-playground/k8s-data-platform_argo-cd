@@ -15,6 +15,7 @@ spec:
       containers:
       - name: mediawiki-kafka-ingester
         image: ghcr.io/ssup2-playground/k8s-data-platform_mediawiki-kafka-ingester:0.1.1
+        args: ["src/page_delete_app.py"]
         imagePullPolicy: Always
         env:
         - name: KAFKA_BOOTSTRAP
