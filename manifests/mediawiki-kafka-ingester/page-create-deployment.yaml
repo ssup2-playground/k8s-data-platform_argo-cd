@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mediawiki-kafka-ingester
+  name: mediawiki-kafka-ingester-page-create
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: mediawiki-kafka-ingester
+      app.kubernetes.io/name: mediawiki-kafka-ingester-page-create
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: mediawiki-kafka-ingester
+        app.kubernetes.io/name: mediawiki-kafka-ingester-page-create
     spec:
       containers:
-      - name: mediawiki-kafka-ingester
-        image: ghcr.io/ssup2-playground/k8s-data-platform_mediawiki-kafka-ingester:0.1.1
+      - name: mediawiki-kafka-ingester-page-create
+        image: ghcr.io/ssup2-playground/k8s-data-platform_mediawiki-kafka-ingester:0.2.0
         args: ["src/page_create_app.py"]
         imagePullPolicy: Always
         env:

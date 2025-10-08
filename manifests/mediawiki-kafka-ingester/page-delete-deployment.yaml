@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mediawiki-kafka-ingester
+  name: mediawiki-kafka-ingester-page-delete
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: mediawiki-kafka-ingester
+      app.kubernetes.io/name: mediawiki-kafka-ingester-page-delete
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: mediawiki-kafka-ingester
+        app.kubernetes.io/name: mediawiki-kafka-ingester-page-delete
     spec:
       containers:
-      - name: mediawiki-kafka-ingester
-        image: ghcr.io/ssup2-playground/k8s-data-platform_mediawiki-kafka-ingester:0.1.1
+      - name: mediawiki-kafka-ingester-page-delete
+        image: ghcr.io/ssup2-playground/k8s-data-platform_mediawiki-kafka-ingester:0.2.0
         args: ["src/page_delete_app.py"]
         imagePullPolicy: Always
         env:
@@ -27,7 +27,7 @@ spec:
         - name: KAFKA_PASSWORD
           value: "user"
         - name: EVENTSTREAM_URL
-          value: "https://stream.wikimedia.org/v2/stream/mediawiki.page-create"
+          value: "https://stream.wikimedia.org/v2/stream/mediawiki.page-delete"
         resources:
           requests:
             memory: "128Mi"
