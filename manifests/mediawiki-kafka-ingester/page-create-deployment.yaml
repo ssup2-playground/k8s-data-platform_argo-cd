@@ -18,7 +18,7 @@ spec:
         args: ["src/page_create_app.py"]
         imagePullPolicy: Always
         env:
-        - name: KAFKA_BOOTSTRAP
+        - name: KAFKA_BOOTSTRAP_SERVERS
           value: "kafka-kafka-sasl-bootstrap.kafka:9092"
         - name: KAFKA_TOPIC
           value: "mediawiki.page-create"
