@@ -14,12 +14,12 @@ spec:
     spec:
       containers:
       - name: mediawiki-kafka-ingester-page-create
-        image: ghcr.io/ssup2-playground/k8s-data-platform_mediawiki-kafka-ingester:0.2.0
+        image: ghcr.io/ssup2-playground/k8s-data-platform_mediawiki-kafka-ingester:0.2.1
         args: ["src/page_create_app.py"]
         imagePullPolicy: Always
         env:
         - name: KAFKA_BOOTSTRAP
-          value: "kafka.kafka:9092"
+          value: "kafka.kafka-kafka-sasl-bootstrap:9092"
         - name: KAFKA_TOPIC
           value: "mediawiki.page-create"
         - name: KAFKA_USERNAME
